@@ -9,7 +9,7 @@ const session= require('express-session')
 
 const app = express();
 
-const PORT = 8000;
+app.set('port', process.env.PORT || 3000)
 
 app.use(session({
 	secret: 'clave',
@@ -101,6 +101,6 @@ app.use((req, res) => {
   res.status(404).send({'message': 'Errorrrrr 404'});
 });
 
-app.listen(PORT, ()=>{
-    console.log("corriendo")
+app.listen(app.get('port'), ()=>{
+	console.log('Server on port:', app.get('port'));
 })
