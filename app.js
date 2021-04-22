@@ -7,11 +7,6 @@ const upload = multer()
 const passport= require('passport')
 const session= require('express-session')
 
-/* 
-const exampleRoutes = require('./route/example') 
-const filesRoutes = require('./route/files') 
-const authRoutes = require('./route/auth')  */
-
 const app = express();
 
 const PORT = 8000;
@@ -101,11 +96,7 @@ app.get('/Dashboard/traer', async (req,res)=>{
     res.send({'status':200,'correo':cursor.correo,'nombre':cursor.nombre,'password':cursor.password,'edad':cursor.edad})                   
 })
 
-/* 
-app.use('/example', exampleRoutes)
-app.use('/files', filesRoutes)
-app.use('/auth', authRoutes)
- */
+
 app.use((req, res) => {
   res.status(404).send({'message': 'Errorrrrr 404'});
 });
@@ -113,50 +104,3 @@ app.use((req, res) => {
 app.listen(PORT, ()=>{
     console.log("corriendo")
 })
-
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const path= require('path');
-// const usuario= require('./modelos/usuarios')
-// /* 
-// const exampleRoutes = require('./route/example') 
-// const filesRoutes = require('./route/files') 
-// const authRoutes = require('./route/auth')  */
-
-// const app = express();
-
-// const PORT = 8000;
-
-// //los midlwers debe ir en el orden correcto
-// app.use(express.static('public'));
-// app.use(express.json());
-// app.use(express.urlencoded({extended:true}))
-
-// app.use((req, res, next) => {                                                                 
-//     res.header("Access-Control-Allow-Origin", "*");                                        
-//     res.header('Access-Control-Allow-Methods', "POST, GET, PUT, DELETE, OPTIONS");     
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");    
-//     res.header("Access-Control-Allow-Credentials", true);              
-//     next();        
-// });
-
-// app.get('/', (req,res)=>{
-//     res.sendFile('./public/index.html', { root: __dirname });                               
-// })
-
-// app.post('/registro', (req,res)=>{
-//     const {email, username, password} = req.body;
-//     console.log(password);
-// })
-// /* 
-// app.use('/example', exampleRoutes)
-// app.use('/files', filesRoutes)
-// app.use('/auth', authRoutes)
-//  */
-// app.use((req, res) => {
-//   res.status(404).send({'message': 'Errorrrrr 404'});
-// });
-
-// app.listen(PORT, ()=>{
-//     console.log("corriendo")
-// })
